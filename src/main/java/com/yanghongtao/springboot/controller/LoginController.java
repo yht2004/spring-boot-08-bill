@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
 import java.util.Map;
@@ -22,8 +23,8 @@ public class LoginController {
         if(!StringUtils.isEmpty(username) && !StringUtils.isEmpty(password)){
             //查询数据库用户是否存在
             User user = userMapper.getUserByUsername(username);
-            if(user != null && password.equals(user.getPassword())){
-                session.setAttribute("loginUser",user.getUsername());
+            if(user != null && user.getPassword().equals(password)){
+                session.setAttribute("loginUser",user);
                 return "redirect:/main.html";
             }
 
@@ -41,5 +42,12 @@ public class LoginController {
         session.invalidate();
         return "redirect:/index.html";
     }
+
+    //修改密码页面
+    @RequestMapping("/user/pwd")
+    public String getUpdatePwdPage(){
+        return "main/password";
+    }
+
 
 }

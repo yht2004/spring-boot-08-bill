@@ -12,7 +12,7 @@
     <h1>中科弘清在线填报系统</h1>
 
     <div class="publicHeaderR">
-        <p><span>下午好！</span><span style="color: #fff21b"> [[${session.loginUser}]]</span> , 欢迎你！</p>
+        <p><span>下午好！</span><span style="color: #fff21b"> [[${session.loginUser.username}]]</span> , 欢迎你！</p>
         <a th:href="@{/logout}" href="../main/login.html">退出</a>
     </div>
 </header>
@@ -30,7 +30,7 @@
                 <li th:id="${activeUri == 'bill' ? 'active' : ''}"><a th:href="@{/bills}">账单管理</a></li>
                 <li th:id="${activeUri == 'provider' ? 'active' : ''}"><a th:href="@{/providers}">供应商管理</a></li>
                 <li th:id="${activeUri == 'user' ? 'active' : ''}"><a th:href="@{/users}">用户管理</a></li>
-                <li><a href="../main/password.html">密码修改</a></li>
+                <li th:id="${activeUri == 'pwd' ? 'active' : ''}"><a  th:href="@{/user/pwd}" href="../main/password.html">密码修改</a></li>
                 <li><a th:href="@{/logout}" href="../main/login.html">退出系统</a></li>
             </ul>
         </nav>
