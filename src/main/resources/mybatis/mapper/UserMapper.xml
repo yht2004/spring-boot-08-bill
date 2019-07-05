@@ -17,7 +17,7 @@
 
     <update id="updateUser">
         UPDATE `bill`.`user`
-        SET  `real_name`=#{realName},
+        SET  `password`=#{password},`real_name`=#{realName},
          `gender`=#{gender}, `birthday`=#{birthday}, `user_type`=#{userType}
          WHERE (`id`=#{id});
     </update>
